@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Product Enhancer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Product Image Enhancer 🚀</h1>
+            <p>Transform raw product photos into professional marketing assets</p>
+        </header>
+
+        <main>
+            <div class="upload-section">
+                <div class="upload-box" id="drop-zone">
+                    <input type="file" id="file-input" accept="image/*" hidden>
+                    <div class="upload-content">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        <p>Click or drag image here to upload</p>
+                    </div>
+                    <img id="image-preview" class="hidden">
+                </div>
+                <button id="generate-btn" class="primary-btn" disabled>Generate Marketing Asset</button>
+            </div>
+
+            <div class="processing-section hidden" id="processing-section">
+                <div class="loader"></div>
+                <p id="status-text">Enhancing your product image...</p>
+                <div class="steps">
+                    <span class="step active" id="step-bg">Background Removal</span>
+                    <span class="step" id="step-cap">Image Captioning</span>
+                    <span class="step" id="step-prompt">Prompt Engineering</span>
+                    <span class="step" id="step-gen">Final Generation</span>
+                </div>
+            </div>
+
+            <div class="result-section hidden" id="result-section">
+                <h2>Generated Result</h2>
+                <div class="result-grid">
+                    <div class="result-card">
+                        <img id="final-image" src="" alt="Generated Product">
+                    </div>
+                    <div class="result-details">
+                        <div class="detail-group">
+                            <h3>Caption Detected</h3>
+                            <p id="result-caption"></p>
+                        </div>
+                        <div class="detail-group">
+                            <h3>AI Prompt Used</h3>
+                            <p id="result-prompt"></p>
+                        </div>
+                        <button class="secondary-btn" onclick="location.reload()">Process Another</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
