@@ -7,9 +7,11 @@ from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
+import os
 from dotenv import load_dotenv
 
-load_dotenv()
+# Load .env from the same directory as this script
+load_dotenv(os.path.join(os.path.dirname(__file__), '.env'))
 
 app = FastAPI()
 

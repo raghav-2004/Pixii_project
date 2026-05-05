@@ -2,7 +2,8 @@ import requests
 import os
 from dotenv import load_dotenv
 
-load_dotenv()
+# Load .env from the same directory as this script
+load_dotenv(os.path.join(os.path.dirname(__file__), '.env'))
 
 HF_API_KEY = os.getenv("HF_API_KEY")
 headers = {"Authorization": f"Bearer {HF_API_KEY}"}
