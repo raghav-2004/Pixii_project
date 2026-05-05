@@ -86,7 +86,7 @@ generateBtn.addEventListener('click', async () => {
     formData.append('file', selectedFile);
 
     try {
-        const response = await fetch('https://pixii-backend-vd4u.onrender.com/generate-marketing-image', {
+        const response = await fetch('https://pixii-project-backend.onrender.com/generate-marketing-image', {
             method: 'POST',
             body: formData
         });
