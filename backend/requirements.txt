@@ -5,3 +5,4 @@ requests
 rembg
 pillow
 gunicorn
+python-multipart
