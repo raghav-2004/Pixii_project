@@ -24,13 +24,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Serve static files from the frontend directory
-app.mount("/frontend", StaticFiles(directory="frontend"), name="frontend")
-
-@app.get("/")
-async def read_index():
-    return FileResponse('frontend/index.html')
-
 HF_API_KEY = os.getenv("HF_API_KEY")
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 
@@ -208,8 +201,7 @@ async def generate_marketing_image(file: UploadFile = File(...)):
 
 if __name__ == "__main__":
     import uvicorn
-    # Hugging Face uses port 7860 by default
-    port = int(os.environ.get("PORT", 7860))
+    port = int(os.environ.get("PORT", 8000))
     uvicorn.run(app, host="0.0.0.0", port=port)
 
 
