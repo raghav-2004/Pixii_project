@@ -8,11 +8,14 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
-import os
 from dotenv import load_dotenv
+from rembg import remove, new_session
 
 # Load .env from the same directory as this script
 load_dotenv(os.path.join(os.path.dirname(__file__), '.env'))
+
+# Pre-load rembg session globally to speed up requests
+rembg_session = new_session()
 
 app = FastAPI()
 
@@ -80,9 +83,8 @@ async def generate_marketing_image(file: UploadFile = File(...)):
         
         # 1. Background Removal
         print("Step 1: Running local rembg for background removal...")
-        from rembg import remove
         try:
-            bg_removed = remove(current_image)
+            bg_removed = remove(current_image, session=rembg_session)
             current_image = bg_removed
             print("Background removed successfully using rembg.")
         except Exception as e:
