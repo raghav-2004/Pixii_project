@@ -1,3 +1,12 @@
+---
+title: Pixii Project
+emoji: 🎨
+colorFrom: blue
+colorTo: indigo
+sdk: docker
+pinned: false
+---
+
 # Pixii Project
 
 An AI-powered image-to-image generation tool that creates professional marketing assets from raw product photos.
