@@ -39,7 +39,7 @@ function handleFile(file) {
         alert('Please select an image file');
         return;
     }
-    
+
     selectedFile = file;
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -57,13 +57,13 @@ let stepInterval;
 function startStepAnimation() {
     let currentStep = 0;
     document.getElementById(steps[currentStep]).classList.add('active');
-    
+
     stepInterval = setInterval(() => {
         if (currentStep < steps.length - 1) {
             document.getElementById(steps[currentStep]).classList.remove('active');
             currentStep++;
             document.getElementById(steps[currentStep]).classList.add('active');
-            
+
             const texts = [
                 "Removing background...",
                 "Analyzing product...",
@@ -86,7 +86,7 @@ generateBtn.addEventListener('click', async () => {
     formData.append('file', selectedFile);
 
     try {
-        const response = await fetch('https://pixii-project-backend.onrender.com/generate-marketing-image', {
+        const response = await fetch('http://localhost:8001/generate-marketing-image', {
             method: 'POST',
             body: formData
         });
@@ -99,11 +99,11 @@ generateBtn.addEventListener('click', async () => {
         }
 
         const data = await response.json();
-        
+
         // Show Results
         processingSection.classList.add('hidden');
         resultSection.classList.remove('hidden');
-        
+
         document.getElementById('final-image').src = data.image;
         document.getElementById('result-caption').innerText = data.caption;
         document.getElementById('result-prompt').innerText = data.prompt;
