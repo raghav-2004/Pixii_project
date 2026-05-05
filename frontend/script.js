@@ -86,7 +86,7 @@ generateBtn.addEventListener('click', async () => {
     formData.append('file', selectedFile);
 
     try {
-        const response = await fetch('http://localhost:8000/generate-marketing-image', {
+        const response = await fetch('/generate-marketing-image', {
             method: 'POST',
             body: formData
         });
